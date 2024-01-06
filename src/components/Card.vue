@@ -6,7 +6,7 @@
           <img
             :src="imagem"
             :alt="cardTitle"
-            style="width: 12rem; height: auto"
+            style="width: 12rem; height: auto; margin: 0.5rem"
           />
         </div>
         <div class="col-md-8">
