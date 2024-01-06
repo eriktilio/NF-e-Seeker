@@ -1,62 +1,66 @@
 <template>
-  <nav
-    class="navbar fixed-top d-flex justify-content-center align-items-center px-5"
-    style="background-color: #e3f2fd"
-  >
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img
-          src="/favicon-32x32.png"
-          alt="Logo"
-          class="d-inline-block align-text-top"
-        />
-        NF-e Seeker
-      </a>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control mr-2"
-          type="search"
-          placeholder="What is the name of the product?"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  <nav class="navbar py-4" style="background-color: transparent">
+    <div class="search-bar">
+      <input
+        id="search-input"
+        type="text"
+        name="search-input"
+        placeholder="Search for the product"
+        value=""
+      />
+      <button id="search-submit" type="submit" name="search-submit">
+        <svg
+          style="width: 24px; height: 24px"
+          viewBox="0 0 24 24"
+          class="search-icon"
+        >
+          <path
+            id="icon-search"
+            fill="#666666"
+            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+          />
+        </svg>
+      </button>
     </div>
   </nav>
 </template>
 <style>
-a {
-  color: var(--blue);
+.label {
+  font-size: 0.625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: +1.3px;
+  margin-bottom: 1rem;
 }
-input[type="search"] {
-  width: 25rem;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+.search-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-input[type="search"]:focus {
-  width: 30rem;
+#search-input {
+  width: 100%;
+  height: 2.8rem;
+  background-color: #f5f5f5;
+  outline: none;
+  border: none;
+  caret-color: var(--blue);
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
 }
-.form-control {
-  background-color: transparent !important;
-  border-radius: 0;
-  border-color: transparent;
-  border-bottom-color: var(--blue);
+#search-input:focus + #search-submit .search-icon path {
+  fill: var(--blue);
 }
-.form-control:focus {
-  box-shadow: none;
-  border-color: transparent;
-  border-bottom-color: var(--blue);
+#search-submit {
+  width: 3.5rem;
+  height: 2.8rem;
+  margin-left: -3.5rem;
+  background: none;
+  border: none;
+  outline: none;
 }
-.btn-outline-success {
-  box-shadow: none !important;
-  color: var(--blue);
-  border-color: var(--blue);
-}
-.btn-outline-success:hover,
-.btn-outline-success:focus,
-.btn-outline-success:active {
-  color: #fff !important;
-  background-color: var(--blue) !important;
-  border-color: var(--blue) !important;
+#search-submit:hover {
+  cursor: pointer;
 }
 </style>
