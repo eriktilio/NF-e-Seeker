@@ -1,11 +1,13 @@
 <template>
   <div class="container-md">
-    <Navbar />
+    <SearchBar />
+    <Category />
     <ListCards />
   </div>
 </template>
 
 <script setup>
+import Category from "@/components/Category.vue";
 import ListCards from "@/components/ListCards.vue";
-import Navbar from "@/components/Navbar.vue";
+import SearchBar from "@/components/SearchBar.vue";
 </script>
