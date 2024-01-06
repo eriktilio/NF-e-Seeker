@@ -6,17 +6,20 @@
           <img
             :src="imagem"
             :alt="cardTitle"
-            style="width: 12rem; height: auto; margin: 0.5rem"
+            style="
+              width: 12rem;
+              height: 12rem;
+              margin: 0.5rem;
+              object-fit: contain;
+            "
           />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ cardTitle }}</h5>
+            <h4 class="card-title">R$ {{ price }}</h4>
+            <h5>{{ cardTitle }}</h5>
             <p class="card-text">
-              {{ cardContent }}
-            </p>
-            <p class="card-text">
-              <small class="text-body-secondary">{{ cardContent }}</small>
+              <i class="bi bi-shop"></i> {{ cardContent }}
             </p>
             <p class="card-text">
               <small class="text-body-secondary">{{
@@ -29,11 +32,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import imagem from "../assets/corona.png";
-</script>
-
 <script>
 export default {
   props: {
@@ -50,7 +48,7 @@ export default {
         month: "long",
       });
       const year = date.getUTCFullYear();
-      return `Last updated: dia ${day} de ${month}, ${year}`;
+      return `Last updated: ${day} de ${month}, ${year}`;
     },
   },
 };
