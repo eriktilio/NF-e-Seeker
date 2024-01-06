@@ -18,6 +18,11 @@
             <p class="card-text">
               <small class="text-body-secondary">{{ cardContent }}</small>
             </p>
+            <p class="card-text">
+              <small class="text-body-secondary">{{
+                formatDate(last_update)
+              }}</small>
+            </p>
           </div>
         </div>
       </div>
@@ -34,6 +39,19 @@ export default {
   props: {
     cardTitle: String,
     cardContent: String,
+    price: String,
+    imagem: String,
+    last_update: Date,
+  },
+  methods: {
+    formatDate(date) {
+      const day = date.getDay();
+      const month = date.toLocaleString("default", {
+        month: "long",
+      });
+      const year = date.getUTCFullYear();
+      return `Last updated: dia ${day} de ${month}, ${year}`;
+    },
   },
 };
 </script>

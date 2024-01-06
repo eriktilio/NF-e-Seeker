@@ -8,6 +8,8 @@
         :cardTitle="card.title"
         :cardContent="card.content"
         :imagem="card.imagem"
+        :price="card.price"
+        :last_update="card.last_update"
       />
     </div>
   </div>

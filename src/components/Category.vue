@@ -15,6 +15,10 @@
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.badge:hover {
+  transform: scale(1.1);
 }
 span {
   color: var(--white);
