@@ -16,9 +16,11 @@
   border-radius: 2rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  user-select: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .badge:hover {
-  transform: scale(1.1);
+  transform: scale(1.09);
 }
 span {
   color: var(--white);

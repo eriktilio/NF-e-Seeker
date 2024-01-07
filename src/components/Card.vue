@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     formatDate(date) {
-      const day = date.getDay();
+      const day = date.getDate();
       const month = date.toLocaleString("default", {
         month: "long",
       });
@@ -53,3 +53,9 @@ export default {
   },
 };
 </script>
+<style>
+.card {
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+</style>
