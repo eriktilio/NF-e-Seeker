@@ -1,15 +1,47 @@
 <template>
-  <span typeof="button" class="badge">Frutas e Vegetais</span>
-  <span typeof="button" class="badge">Carnes e Aves</span>
-  <span typeof="button" class="badge">Laticínios</span>
-  <span typeof="button" class="badge">Padaria</span>
-  <span typeof="button" class="badge">Congelados</span>
-  <span typeof="button" class="badge">Bebidas</span>
-  <span typeof="button" class="badge">Lanches e Doces</span>
-  <span typeof="button" class="badge">Produtos de Limpeza</span>
-  <span typeof="button" class="badge">Produtos de Higiene Pessoal</span>
+  <div class="category">
+    <span
+      v-for="(category, index) in categoryList"
+      :key="index"
+      typeof="button"
+      :class="{ badge: true, active: category.active }"
+      @click="emitSearch(category.query, index)"
+    >
+      {{ category.name }}
+    </span>
+  </div>
 </template>
+
+<script>
+import CategoryList from "@/mocks/list-category";
+import { reactive } from "vue";
+
+export default {
+  data() {
+    return {
+      categoryList: reactive(CategoryList),
+    };
+  },
+  methods: {
+    emitSearch(query, currentIndex) {
+      // Atualiza o estado "active" da categoria
+      this.categoryList.forEach((category, index) => {
+        category.active = index === currentIndex;
+      });
+
+      // Emite o evento com a consulta
+      this.$emit("search", query);
+    },
+  },
+};
+</script>
+
 <style>
+.category {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .badge {
   background-color: var(--blue);
   padding: 0.5rem 1rem;
@@ -22,8 +54,12 @@
 .badge:hover {
   transform: scale(1.09);
 }
+.badge.active {
+  transform: scale(1.09);
+  background-color: var(--red);
+}
 span {
   color: var(--white);
-  margin: 0.3rem;
+  margin-bottom: 0.8rem;
 }
 </style>

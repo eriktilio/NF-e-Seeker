@@ -5,9 +5,9 @@
         <div class="col-md-4 text-center">
           <img
             :src="imagem"
-            :alt="cardTitle"
+            :alt="title"
             style="
-              width: 12rem;
+              max-width: 12rem;
               height: 12rem;
               margin: 0.5rem;
               object-fit: contain;
@@ -17,14 +17,15 @@
         <div class="col-md-8">
           <div class="card-body">
             <h4 class="card-title">R$ {{ price }}</h4>
-            <h5>{{ cardTitle }}</h5>
+            <h5>{{ title }}</h5>
+            <p class="card-text"><i class="bi bi-shop"></i> {{ local }}</p>
+            <small class="text-body-secondary"
+              ><i class="bi bi-geo-alt-fill"></i>{{ address }}</small
+            >
             <p class="card-text">
-              <i class="bi bi-shop"></i> {{ cardContent }}
-            </p>
-            <p class="card-text">
-              <small class="text-body-secondary">{{
-                formatDate(last_update)
-              }}</small>
+              <small class="text-body-secondary"
+                ><i class="bi bi-clock"></i> {{ last_update }}</small
+              >
             </p>
           </div>
         </div>
@@ -35,21 +36,12 @@
 <script>
 export default {
   props: {
-    cardTitle: String,
-    cardContent: String,
+    title: String,
+    local: String,
+    address: String,
     price: String,
     imagem: String,
-    last_update: Date,
-  },
-  methods: {
-    formatDate(date) {
-      const day = date.getDate();
-      const month = date.toLocaleString("default", {
-        month: "long",
-      });
-      const year = date.getUTCFullYear();
-      return `Last updated: ${day} de ${month}, ${year}`;
-    },
+    last_update: String,
   },
 };
 </script>
@@ -57,5 +49,15 @@ export default {
 .card {
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  min-height: 17rem;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.bi-geo-alt-fill {
+  color: var(--red);
 }
 </style>

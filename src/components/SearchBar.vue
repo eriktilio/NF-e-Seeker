@@ -6,9 +6,16 @@
         type="text"
         name="search-input"
         placeholder="Search for the product"
-        value=""
+        v-model="searchQuery"
+        autocomplete="off"
+        @keyup.enter="emitSearch"
       />
-      <button id="search-submit" type="submit" name="search-submit">
+      <button
+        id="search-submit"
+        type="submit"
+        name="search-submit"
+        @click="emitSearch"
+      >
         <svg
           style="width: 24px; height: 24px"
           viewBox="0 0 24 24"
@@ -24,6 +31,23 @@
     </div>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    emitSearch() {
+      if (this.searchQuery.trim() === "") {
+        return;
+      }
+      this.$emit("search", this.searchQuery);
+    },
+  },
+};
+</script>
 <style>
 .label {
   font-size: 0.625rem;
